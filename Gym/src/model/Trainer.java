@@ -65,16 +65,16 @@ public class Trainer extends Person implements Registerable, DietManageable {
 
 	// 담당 회원 수에 따라 트레이너 등급을 변경하는 기능
 	private void updateGradeByMemberCount() {
-		int count = managedMembers.size();
+		int count = managedMembers.size(); // managedMembers를 count를 저장
 
 		if (count >= 10) {
-			grade = TrainerGrade.MASTER;
+			grade = TrainerGrade.MASTER; //트레이너가 회원이 10명이 넘으면 MASTER로 grade로 저장
 		} else if (count >= 7) {
-			grade = TrainerGrade.SENIOR;
+			grade = TrainerGrade.SENIOR; //트레이너가 회원이 7~9명이 넘으면 SENIOR로 grade로 저장
 		} else if (count >= 4) {
-			grade = TrainerGrade.JUNIOR;
+			grade = TrainerGrade.JUNIOR; //트레이너가 회원이 4~6명이 넘으면 JUNIOR로 grade로 저장
 		} else {
-			grade = TrainerGrade.INTERN;
+			grade = TrainerGrade.INTERN; //트레이너가 0~3까지 등록이 되어있으면 grade로 저장
 		}
 	}
 
@@ -82,14 +82,14 @@ public class Trainer extends Person implements Registerable, DietManageable {
 	public void printAttendance() {
 		System.out.println("=== 출석한 담당 회원 목록 ===");
 
-		boolean found = false;
+		boolean found = false; //해당 트레이너에 회원이 출석이 되어있는지 boolean으로 false로 기본으로  설정
 
 		for (Member member : managedMembers) {
 			if (member.isAttendedToday()) {
 				System.out.println(member.getName());
 				found = true;
 			}
-		}
+		} //여기서 출석이 되어있으면 해당 이름출력하기 
 
 		if (!found) {
 			System.out.println("오늘 출석한 담당 회원이 없습니다.");
@@ -99,14 +99,14 @@ public class Trainer extends Person implements Registerable, DietManageable {
 	// 트레이너의 전체 정보를 출력하는 기능
 	@Override
 	public void printInfo() {
-		System.out.println("===" + getName() + "트레이너 정보" + "===");
-		System.out.println("이름: " + getName());
-		System.out.println("전화번호: " + getPhoneNumber());
-		System.out.println("나이: " + getAge());
-		System.out.println("키: " + getHeight());
-		System.out.println("몸무게: " + getWeight());
-		System.out.println("등급: " + grade);
-		System.out.println("담당 회원 수: " + managedMembers.size());
+		System.out.println("===" + getName() + "트레이너 정보" + "==="); //해당 트레이너 이름 getName으로 저장
+		System.out.println("이름: " + getName()); //해당 트레이너 정보를 getName 출력
+		System.out.println("전화번호: " + getPhoneNumber()); // 해당 트레이너 정보를 전화번호를 저장한거를 불러옴
+		System.out.println("나이: " + getAge()); //해당 트레이너 나이 가져옴 getAge로
+		System.out.println("키: " + getHeight()); //해당 트레이너 getHieght로 해당 트레이너 키 가져옴
+		System.out.println("몸무게: " + getWeight()); // 해당 트레이너 몸무게 가져옴
+		System.out.println("등급: " + grade); //해당 트레이너 grade로 인원수의 맞쳐 updateGradeByMemberCount 여기서 결과를 내서 등급을 보여줌 
+		System.out.println("담당 회원 수: " + managedMembers.size()); //등록한 회원을 회원 수를 보여줌
 	}
 
 	// 현재 트레이너 등급 반환 기능
