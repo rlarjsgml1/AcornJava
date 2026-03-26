@@ -56,6 +56,11 @@ public class Trainer extends Person implements Registerable, DietManageable {
 		System.out.println(member.getName() + " 회원이 담당 회원으로 추가되었습니다.");
 		System.out.println("현재 담당 회원 수: " + managedMembers.size());
 		System.out.println("현재 트레이너 등급: " + grade);
+		System.out.println("등록된 담당 회원 목록:");
+
+	    for (int i = 0; i < managedMembers.size(); i++) {
+	        System.out.println((i + 1) + ". " + managedMembers.get(i).getName());
+	    }
 	}
 
 	// 담당 회원 수에 따라 트레이너 등급을 변경하는 기능
