@@ -192,7 +192,11 @@ public class Main {
 
 
         System.out.print("회원 이름: ");      mName = sc.nextLine();
-        System.out.println("상체"+ "하체"+ "유산소");
+        Member  m = gm.findMember(mName);
+        if (m == null) { System.out.println("이름을 확인해 주세요.");
+            return; }
+
+        System.out.println("상체 "+ "하체 "+ "유산소를 골라주세요");
         String bodyPart = sc.nextLine();
 
         if (!validParts.contains(bodyPart)) {
@@ -201,10 +205,6 @@ public class Main {
             return;
         }
 
-        Member  m = gm.findMember(mName);
-        if (m == null) { System.out.println("이름을 확인해 주세요.");
-            equipmentMenu();
-            return; }
         m.explainEquipment(bodyPart);
     }
 
